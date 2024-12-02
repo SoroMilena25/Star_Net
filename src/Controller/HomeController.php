@@ -13,7 +13,7 @@ class HomeController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('connexion/index.html.twig', [//a changer pour l'accueil (juste pour modif ma page connexion)
+        return $this->render('home/index.html.twig', [//a changer pour l'accueil (juste pour modif ma page connexion)
             'controller_name' => 'HomeController',
         ]);
     }
