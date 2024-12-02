@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ConnexionController!{% endblock %}
+
+{% block body %}
+<div class="inscription-container">
+    <h2 class="inscription-header">Créez votre compte</h2>
+    
+    <form action="{{ path('inscription') }}" method="post" class="inscription-form">
+        
+        <!-- Champ Identifiant -->
+        <div class="mb-3">
+            <label for="identifiant" class="form-label">Identifiant</label>
+            <input type="text" class="form-control" id="identifiant" name="identifiant" required placeholder="Entrez un identifiant unique">
+        </div>
+        
+        <!-- Champ Nom d'utilisateur -->
+        <div class="mb-3">
+            <label for="username" class="form-label">Nom d'utilisateur</label>
+            <input type="text" class="form-control" id="username" name="username" required placeholder="Nom d'utilisateur">
+        </div>
+        
+        <!-- Champ Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required placeholder="exemple@mail.com">
+        </div>
+        
+        <!-- Champ Mot de passe -->
+        <div class="mb-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input type="password" class="form-control" id="password" name="password" required placeholder="Mot de passe">
+        </div>
+        
+        <!-- Champ Confirmer mot de passe -->
+        <div class="mb-3">
+            <label for="confirm_password" class="form-label">Confirmer le mot de passe</label>
+            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required placeholder="Confirmez votre mot de passe">
+        </div>
+        
+        <button type="submit" class="btn btn-custom w-100">S'inscrire</button>
+    </form>
+
+    <p class="footer-text mt-3">Déjà un compte ? <a href="{{ path('login') }}" class="btn-link">Se connecter</a></p>
+</div>
+{% endblock %}
+
+
