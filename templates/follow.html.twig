@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Abonnements de {{ user.pseudo }}{% endblock %}
+
+{% block body %}
+<style>
+
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Style du bouton Suivre / Se désabonner */
+.btn {
+    width: 100%;
+}
+</style>
+
+    <div class="container my-4">
+        <h1 class="text-center mb-4">Abonnements de {{ user.pseudo }}</h1>
+
+        <!-- Section des abonnements -->
+        <div class="mb-5">
+            <h3>Abonnements</h3>
+            <div class="row">
+                {% for abonnement in abonnements %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card shadow-sm">
+                            < img src="{{ abonnement.idUser1.profile_picture }}" class="card-img-top" alt="{{ abonnement.idUser1.pseudo }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ abonnement.idUser1.pseudo }}</h5>
+                                <p class="card-text">Abonné(e) depuis : {{ abonnement.dateH|date('d/m/Y') }}</p >
+                                <form action="{{ path('abonnement_unfollow', {'idUser': user.id, 'idAbonnement': abonnement.idUser1.id}) }}" method="post">
+                                    <button type="submit" class="btn btn-danger">Se désabonner</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Section des abonnés -->
+        <div>
+            <h3>Abonnés</h3>
+            <div class="row">
+                {% for abonne in abonnees %}
+                    <div class="col-md-4 mb-3">
+                        <div class="card shadow-sm">
+                            < img src="{{ abonne.idUser.profile_picture }}" class="card-img-top" alt="{{ abonne.idUser.pseudo }}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ abonne.idUser.pseudo }}</h5>
+                                <p class="card-text">Suivi depuis : {{ abonne.dateH|date('d/m/Y') }}</p >
+                                {% if abonne.idUser.id != user.id %}
+                                    <form action="{{ path('abonnement_follow', {'idUser': user.id, 'idAbonne': abonne.idUser.id}) }}" method="post">
+                                        <button type="submit" class="btn btn-primary">Suivre</button>
+                                    </form>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
