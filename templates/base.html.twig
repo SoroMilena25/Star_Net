@@ -1,0 +1,26 @@
+<<<<<<< HEAD
+=======
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Symfony{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ path('app_home') }}">Home</a></li>
+                <li><a href="{{ path('app_abonnement') }}">Abonnements</a></li>
+                <li><a href="{{ path('app_user') }}">User</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        {% block body %}{% endblock %}
+    </div>
+</body>
+</html>
+>>>>>>> 9047e1107a16700fc707e743485bd6538b7025e7
