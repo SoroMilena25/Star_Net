@@ -1,7 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block title %}Hello ConnexionController!{% endblock %}
 
+{% block body %}
 <div class="inscription-container">
     <h2 class="inscription-header">Créez votre compte</h2>
     
@@ -43,3 +44,5 @@
     <p class="footer-text mt-3">Déjà un compte ? <a href="{{ path('login') }}" class="btn-link">Se connecter</a></p>
 </div>
 {% endblock %}
+
+
