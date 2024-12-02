@@ -1,19 +1,46 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+{% extends 'base.html.twig' %}
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
-</html>
+{% block body %}
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="inscription-container">
+        <h2 class="inscription-header">Créez votre compte</h2>
+        
+        <form action="{{ path('inscription') }}" method="post" class="inscription-form">
+            
+            <!-- Champ Identifiant -->
+            <div class="mb-3">
+                <label for="identifiant" class="form-label">Identifiant</label>
+                <input type="text" class="form-control" id="identifiant" name="identifiant" required placeholder="Entrez un identifiant unique">
+            </div>
+            
+            <!-- Champ Nom d'utilisateur -->
+            <div class="mb-3">
+                <label for="username" class="form-label">Nom d'utilisateur</label>
+                <input type="text" class="form-control" id="username" name="username" required placeholder="Nom d'utilisateur">
+            </div>
+            
+            <!-- Champ Email -->
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required placeholder="exemple@mail.com">
+            </div>
+            
+            <!-- Champ Mot de passe -->
+            <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="password" name="password" required placeholder="Mot de passe">
+            </div>
+            
+            <!-- Champ Confirmer mot de passe -->
+            <div class="mb-3">
+                <label for="confirm_password" class="form-label">Confirmer le mot de passe</label>
+                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required placeholder="Confirmez votre mot de passe">
+            </div>
+            
+            <button type="submit" class="btn btn-custom w-100">S'inscrire</button>
+        </form>
+
+        <p class="footer-text mt-3">Déjà un compte ? <a href="{{ path('login') }}" class="btn-link">Se connecter</a></p>
+    </div>
+</div>
+{% endblock %}
