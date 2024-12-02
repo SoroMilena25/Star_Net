@@ -31,14 +31,19 @@
     <h2>Créer un compte</h2>
 
     <form action="#" method="POST">
+
+    <div class="mb-3">
+            <label for="identifiant" class="form-label">Identifiant</label>
+            <input type="text" class="form-control" id="identifiant" name="identifiant" required>
+        </div>
         <div class="mb-3">
-            <label for="firstName" class="form-label">Prénom</label>
-            <input type="text" class="form-control" id="firstName" name="firstName" required>
+            <label for="prenom" class="form-label">Prénom</label>
+            <input type="text" class="form-control" id="prenom" name="prenom" required>
         </div>
 
         <div class="mb-3">
-            <label for="lastName" class="form-label">Nom</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" required>
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="nom" name="nom" required>
         </div>
 
         <div class="mb-3">
@@ -47,13 +52,13 @@
         </div>
 
         <div class="mb-3">
-            <label for="password" class="form-label">Mot de passe</label>
-            <input type="password" class="form-control" id="password" name="password" required>
+            <label for="mdp" class="form-label">Mot de passe</label>
+            <input type="password" class="form-control" id="mdp" name="mdp" required>
         </div>
 
         <div class="mb-3">
-            <label for="confirmPassword" class="form-label">Confirmer le mot de passe</label>
-            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+            <label for="mdpconfirm" class="form-label"> Mot de passe</label>
+            <input type="password" class="form-control" id="mdpconfirm" name="mdpconfirm" required>
         </div>
 
         <button type="submit" class="btn btn-primary w-100">S'inscrire</button>
