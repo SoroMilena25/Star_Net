@@ -5,7 +5,12 @@ namespace App\Entity;
 use App\Repository\CommenterRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
-
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Validator\Exception\ValidationException;
 /**
  * @ApiResource
  * @ORM\Entity(repositoryClass=CommenterRepository::class)
