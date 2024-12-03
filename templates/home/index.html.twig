@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,70 +8,264 @@
     <title>Accueil - Réseau Social</title>
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #f4f6f8;
+            font-family: 'Arial', sans-serif;
         }
+
         .navbar {
-            margin-bottom: 20px;
+            background-color: #343a40;
+            padding: 1rem;
         }
+
+        .navbar-brand {
+            color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .navbar-nav .nav-link {
+            color: #f8f9fa !important;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #a6a6a6 !important;
+        }
+
         .jumbotron {
-            background-color: #e9ecef;
-            padding: 2rem 1rem;
+            background-color: #ffffff;
+            padding: 3rem 1rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            margin-top: 80px;
         }
+
+        .jumbotron h1 {
+            font-size: 3rem;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .jumbotron p {
+            font-size: 1.25rem;
+            color: #666;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
         .footer {
             background-color: #343a40;
             color: white;
-            padding: 10px 0;
+            padding: 15px 0;
             text-align: center;
             position: fixed;
             width: 100%;
             bottom: 0;
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .post {
+            margin-bottom: 30px;
+        }
+
+        .post .card {
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .post .card-header {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+
+        .post .card-body {
+            font-size: 1.1rem;
+        }
+
+        .post .card-footer {
+            background-color: #f8f9fa;
+            text-align: right;
+            font-size: 0.9rem;
+            color: #888;
+        }
+
+        @media (max-width: 767px) {
+            .jumbotron {
+                margin-top: 120px;
+            }
+        }
+
+        /* Style pour le bouton sur le côté */
+        #sideButton {
+            position: fixed;
+            right: 20px; /* Distance du bord droit */
+            bottom: 20px; /* Distance du bas de la page */
+            width: 50px;
+            height: 50px;
+            font-size: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #28a745; /* Couleur verte */
+            color: white;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1050; /* S'assurer que le bouton soit au-dessus de tout le reste */
+        }
+
+        /* Ajoutez une ombre au survol du bouton */
+        #sideButton:hover {
+            background-color: #218838;
         }
     </style>
 </head>
+
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Barre de navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Réseau Social</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#"><img src="public/img/logo1.png"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                        <a class="nav-link active" href="#">Accueil</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Profil</a>
+                        <a class="nav-link" href="#">Profils</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Messages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Paramètres</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Connexion
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Se connecter</a></li>
+                            <li><a class="dropdown-item" href="#">S'inscrire</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Quelque chose d'autre</a></li>
+                        </ul>
                     </li>
                 </ul>
+                <form class="d-flex ms-3">
+                    <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Rechercher</button>
+                </form>
             </div>
         </div>
     </nav>
 
     <div class="container">
         <div class="jumbotron text-center">
-            <h1 class="display-4">Bienvenue sur Réseau Social</h1>
+            <h1 class="display-4">Bienvenue sur Star Net</h1>
             <p class="lead">Connectez-vous avec vos amis et le monde qui vous entoure.</p>
-            <hr class="my-4">
-            <p>Inscrivez-vous dès maintenant pour commencer à partager vos moments.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">S'inscrire</a>
-            <a class="btn btn-secondary btn-lg" href="#" role="button">Se connecter</a>
+        </div>
+        <br>
+
+        <!-- Le bouton avec le "+" sur le côté -->
+        <button id="sideButton" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createPostModal">
+            <span class="fw-bold">+</span>
+        </button>
+
+        <!-- Fenêtre modale -->
+        <div class="modal fade" id="createPostModal" tabindex="-1" aria-labelledby="createPostModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createPostModalLabel">Créer une publication</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <textarea class="form-control" id="postContent" rows="4" placeholder="Écrivez votre publication ici..."></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-primary" id="submitPost">Publier</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fil d'actualités (Thread) -->
+        <div class="post">
+            <div class="card">
+                <div class="card-header">
+                    <strong>John Doe</strong> a partagé une publication
+                </div>
+                <div class="card-body">
+                    <p>J'ai fait un caca aujourd'hui !</p>
+                </div>
+                <div class="card-footer">
+                    12 minutes ago
+                </div>
+            </div>
+        </div>
+
+        <div class="post">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Jane Smith</strong> a partagé une publication
+                </div>
+                <div class="card-body">
+                    <p>Trop bien le film Arcane ! #arcane #discussions</p>
+                </div>
+                <div class="card-footer">
+                    1 hour ago
+                </div>
+            </div>
         </div>
     </div>
 
     <footer class="footer">
         <div class="container">
-            <span>&copy; 2024 Star Net. Tous droits réservés.</span>
+            <span>&copy; 2024 Star Net. Tous droits réservés. | <a href="#">Mentions légales</a></span>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>
