@@ -5,19 +5,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Metadata\Delete;
-use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\GetCollection;
-use ApiPlatform\Metadata\Patch;
-use ApiPlatform\Metadata\Post;
-use ApiPlatform\Validator\Exception\ValidationException;
 
 /**
  * @ApiResource(
  *     collectionOperations={
  *         "get"={
- *             "method"="GET",
- *             "path"="/users"
+ *             "method"="GET"
  *         },
  *         "post"={
  *             "method"="POST",
@@ -39,7 +32,8 @@ use ApiPlatform\Validator\Exception\ValidationException;
  *         }
  *     }
  * )
- * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\Table(name="user")  
+ * @ORM\Entity
  */
 class User
 {
