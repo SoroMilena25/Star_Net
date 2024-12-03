@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Entity;
-
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -16,7 +14,32 @@ use ApiPlatform\Validator\Exception\ValidationException;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
- * @ApiResource
+ * @ApiResource(
+ *     collectionOperations={
+ *         "get"={
+ *             "method"="GET",
+ *             "path"="/users"
+ *         },
+ *         "post"={
+ *             "method"="POST",
+ *             "path"="/users"
+ *         }
+ *     },
+ *     itemOperations={
+ *         "get"={
+ *             "method"="GET",
+ *             "path"="/users/{id}"
+ *         },
+ *         "put"={
+ *             "method"="PUT",
+ *             "path"="/users/{id}"
+ *         },
+ *         "delete"={
+ *             "method"="DELETE",
+ *             "path"="/users/{id}"
+ *         }
+ *     }
+ * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User
@@ -55,30 +78,43 @@ class User
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Abonnement", mappedBy="qui")
+     * @var Collection<Abonnement>
      */
-    private $followers; // Les utilisateurs qui me suivent
+    private $followers;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Abonnement", mappedBy="a_qui")
+     * @var Collection<Abonnement>
      */
-    private $following; // Les utilisateurs que je suis
+    private $following;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Aimer", mappedBy="qui")
+     * @var Collection<Aimer>
      */
-    private Collection $aimes; // Les publications que l'utilisateur aime
+    private $aimes;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Commenter", mappedBy="qui")
+     * @var Collection<Commenter>
      */
-    private Collection $commentaires; // Les commentaires écrits par l'utilisateur
+    private $commentaires;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Publication", mappedBy="user")
+     * @var Collection<Publication>
      */
-    private Collection $publications;  // Les publications créées par l'utilisateur
+    private $publications;
 
 
+    public function __construct()
+    {
+        $this->followers = new ArrayCollection();
+        $this->following = new ArrayCollection();
+        $this->aimes = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
+        $this->publications = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -93,7 +129,6 @@ class User
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
         return $this;
     }
 
@@ -105,7 +140,6 @@ class User
     public function setPrenom(string $prenom): self
     {
         $this->prenom = $prenom;
-
         return $this;
     }
 
@@ -117,7 +151,6 @@ class User
     public function setPseudo(string $pseudo): self
     {
         $this->pseudo = $pseudo;
-
         return $this;
     }
 
@@ -129,7 +162,6 @@ class User
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -141,7 +173,6 @@ class User
     public function setMdp(string $mdp): self
     {
         $this->mdp = $mdp;
-
         return $this;
     }
 
@@ -153,5 +184,20 @@ class User
     public function getFollowing(): Collection
     {
         return $this->following;
+    }
+
+    public function getAimes(): Collection
+    {
+        return $this->aimes;
+    }
+
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function getPublications(): Collection
+    {
+        return $this->publications;
     }
 }
