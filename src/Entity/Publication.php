@@ -16,7 +16,7 @@ use ApiPlatform\Validator\Exception\ValidationException;
 use Symfony\Component\HttpFoundation\Response;
 /**
  * @ApiResource
- * @ORM\Entity(repositoryClass=PublicationRepository::class)
+ * @ORM\Entity
  */
 class Publication
 {

@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @ApiResource
- * @ORM\Entity(repositoryClass=AimerRepository::class)
+ * @ORM\Entity
  */
 class Aimer
 {

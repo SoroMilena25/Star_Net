@@ -14,7 +14,7 @@ use ApiPlatform\Validator\Exception\ValidationException;
 use Symfony\Component\HttpFoundation\Response;
 /**
  * @ApiResource
- * @ORM\Entity(repositoryClass=CommenterRepository::class)
+ * @ORM\Entity
  */
 class Commenter
 {

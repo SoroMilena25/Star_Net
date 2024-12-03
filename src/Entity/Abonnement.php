@@ -16,7 +16,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @ApiResource
- * @ORM\Entity(repositoryClass=AbonnementRepository::class)
+ * @ORM\Entity
  */
 class Abonnement
 {
