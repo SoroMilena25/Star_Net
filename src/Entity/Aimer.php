@@ -4,8 +4,10 @@ namespace App\Entity;
 
 use App\Repository\AimerRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
+ * @ApiResource
  * @ORM\Entity(repositoryClass=AimerRepository::class)
  */
 class Aimer
