@@ -17,8 +17,7 @@ use Symfony\Component\HttpFoundation\Response;
  * @ApiResource(
  *     collectionOperations={
  *         "get"={
- *             "method"="GET",
- *             "path"="api/users"
+ *             "method"="GET"
  *         },
  *         "post"={
  *             "method"="POST",
@@ -40,7 +39,7 @@ use Symfony\Component\HttpFoundation\Response;
  *         }
  *     }
  * )
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User
 {
